@@ -1,0 +1,32 @@
+/*---Base Styles---*/
+
+* {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: 20px;
+  }
+
+  body {
+    font-family: 'Roboto', serif;
+    background-color: whitesmoke;
+  }
+
+  h1 { 
+    text-align: center;
+    font-family: 'Roboto', serif;
+  }
+
+/*---Form Input---*/
+
+.form-input { 
+    width: 100%;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    border: solid 1px lightgray;
+  }
