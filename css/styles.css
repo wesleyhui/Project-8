@@ -1,4 +1,4 @@
-/*---Base Styles---*/
+/*----Base Styles----*/
 
 * {
     box-sizing: border-box;
@@ -20,13 +20,137 @@
     font-family: 'Roboto', serif;
   }
 
-/*---Form Input---*/
+/*----Search Input----*/
 
 .form-input { 
-    width: 100%;
-    border-radius: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 16px;
-    border: solid 1px lightgray;
+  width: 100%;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  border: solid 1px lightgray;
+}
+
+/*----Employee Overlay----*/
+
+.modal-overlay { 
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content { 
+  background-color: white;
+  margin: 100px 10% 100px 15%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-content span { 
+  padding-left: 95%;
+}
+
+.modal-img { 
+  text-align: center; 
+}
+
+.profile-img { 
+  border-radius: 50%;
+}
+
+.right,
+.left { 
+  border: none; 
+  background: none;
+  font-size: 20px;
+}
+
+.modal-content h2 {
+  text-align: center;
+}
+
+.modal-content p { 
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.modal-content hr { 
+  width: 80%;
+}
+
+/*----EMPLOYEE CARDS----*/
+
+.container { 
+  display: grid;
+}
+
+.card { 
+  border: solid 1px gray;
+  display: flex;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: white;
+  padding: 30px 15px;
+}
+
+.card:hover { 
+  background-color: lightgoldenrodyellow;
+}
+
+.card img { 
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.employee-data { 
+  margin: 0px;
+  padding: 0px;
+}
+
+.employee-data h2 {
+  margin-bottom: 10px;
+}
+
+.employee-data p { 
+  color: gray;
+  margin: 0px 0px 10px auto;
+}
+
+
+/*----MEDIA QUERIES----*/
+
+@media (min-width: 768px) {
+
+  h1 { 
+    text-align: left;
   }
+
+  html {
+    font-size: 14px;
+  }
+
+  .modal-content { 
+    width: 50%; 
+    height: 50%;
+    margin: 100px 175px;
+  }
+
+  .container { 
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+  }
+  
+  .card { 
+    width: 95%;
+    margin-left: 5px;
+  }
+}
+
+/*----Media Query----*/
