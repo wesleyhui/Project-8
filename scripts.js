@@ -1,15 +1,6 @@
-/*$.ajax({
-    url: 'https://randomuser.me/api/',
-    dataType: 'json',
-    success: function(data) {
-      console.log(data);
-    }
-  });
-*/
+// ==== Main Variables ==== 
 
-//----Main Variables----
-
-const url = 'https://randomuser.me/api/?results=12&nat=us'; 
+const url = 'https://randomuser.me/api/?results=12&nat=us'; //12 random API 
 const employees = [];
 const employeeBox = document.getElementById('main');
 const employeeOverlay = document.getElementsByClassName('modal-overlay')[0];
@@ -19,16 +10,16 @@ const string = document.getElementById('search');
 let letter = document.getElementsByClassName('card');
 
 
-//----Fetch Functions----
+// ==== Fetch Functions ====
 
-    fetch(url) 
-        .then((response) => response.json()) 
+    fetch(url) //random fetch of 12 employees
+        .then((response) => response.json()) //parse JSON
         .then(employeeInfo)
 
 
-//----Helper Functions----
+//==== Helper Functions ====
 
-    /*---Employee Card Function---*/ 
+    /*---Employee Card Function---*/ //Employee Card Data of img, first & last name, email, location.city
 
         function employeeInfo(data) {
             for(let i=0; i < data.results.length; i += 1) {
@@ -56,10 +47,11 @@ let letter = document.getElementsByClassName('card');
             });
         }
 
-    /*----Overlay Function----*/
+    /*---Overlay Function---*/
 
         function employeeModal(employee, index) {
 
+            //creating date variable based upon user's locale
             const dob = new Date(Date.parse(employee.dob.date)).toLocaleDateString(navigator.language);
 
             employeeOverlay.innerHTML = 
@@ -86,6 +78,7 @@ let letter = document.getElementsByClassName('card');
 
             employeeOverlay.style.display = 'flex';
 
+            //Event Listener for the "X" overlay
             const modalClose = document.getElementsByClassName('closing')[0];
 
             modalClose.addEventListener('click', () => {
@@ -94,23 +87,38 @@ let letter = document.getElementsByClassName('card');
         }
 
 
-//----Event Listener/ Flip through Employees in Modal Overlay----
+//====Event Listener/ Flip through Employees in Modal Overlay====
 
 employeeOverlay.addEventListener('click', (event) => {
-    if(event.target.className === 'left') { 
+    if(event.target.className === 'left') { //left arrow
         let indexPosition = parseInt(employeeOverlay.firstElementChild.getAttribute('data-index'));
-        indexPosition -= 1; 
+        indexPosition -= 1; //minus 1 to index position with every left arrow click
         if (indexPosition > -1) {
             employeeModal(employees[indexPosition], indexPosition);
         }
     }
-    if(event.target.className === 'right') { 
+    if(event.target.className === 'right') { //right arrow
         let indexPosition = parseInt(employeeOverlay.firstElementChild.getAttribute('data-index'));
-        indexPosition += 1; 
+        indexPosition += 1; //adding 1 to index position with every right arrow click
         if (indexPosition < 12) {
             employeeModal(employees[indexPosition], indexPosition);
         }
     }
 })
 
-//----Search Filter Function----
+
+
+//====Search Filter Function ====
+
+string.addEventListener('keyup', () =>{
+    const input = string.value.toLowerCase();
+
+    for(let i=0; i< letter.length; i += 1){
+        const nameInfo = letter[i].innerHTML;
+        if (nameInfo.toLowerCase().indexOf(input) > -1) {
+            letter[i].style.display = '';
+        } else {
+            letter[i].style.display = 'none';
+        }
+    }
+});
